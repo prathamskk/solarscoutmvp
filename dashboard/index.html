@@ -4,30 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolarScout MVP Dashboard</title>
+    <title>SolarScout MVP — Dashboards Directory</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0c0f17;
-            --surface-color: #151a26;
-            --surface-border: #232d42;
+            --bg-color: #0b0f19;
+            --surface-color: #131926;
+            --surface-hover: #1a2336;
+            --surface-border: #1f293d;
             --primary: #f59e0b;
-            --primary-glow: rgba(245, 158, 11, 0.25);
-            --primary-hover: #d97706;
+            --primary-glow: rgba(245, 158, 11, 0.2);
             --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
+            --emerald: #10b981;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --success: #10b981;
+            --text-sub: #64748b;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
@@ -36,26 +37,25 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
             background-image:
-                radial-gradient(ellipse at 20% 0%, rgba(245, 158, 11, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 10%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 15% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 85% 10%, rgba(56, 189, 248, 0.07) 0%, transparent 40%),
                 linear-gradient(to bottom, transparent, var(--bg-color));
         }
 
         header {
             border-bottom: 1px solid var(--surface-border);
             backdrop-filter: blur(12px);
-            background: rgba(12, 15, 23, 0.7);
+            background: rgba(11, 15, 25, 0.8);
             position: sticky;
             top: 0;
             z-index: 50;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 1.25rem 2rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -68,193 +68,263 @@
             text-decoration: none;
             color: var(--text-main);
             font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: -0.025em;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
         }
 
         .logo-icon {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 16px var(--primary-glow);
+            box-shadow: 0 0 14px var(--primary-glow);
+            color: white;
         }
 
-        .badge-live {
+        .badge-status {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.35rem 0.85rem;
+            gap: 0.45rem;
+            padding: 0.3rem 0.75rem;
             border-radius: 9999px;
-            background: rgba(16, 185, 129, 0.12);
-            color: var(--success);
-            font-size: 0.8125rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--emerald);
+            font-size: 0.75rem;
             font-weight: 600;
             border: 1px solid rgba(16, 185, 129, 0.25);
         }
 
         .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--success);
+            width: 7px;
+            height: 7px;
+            background-color: var(--emerald);
             border-radius: 50%;
-            box-shadow: 0 0 8px var(--success);
+            box-shadow: 0 0 8px var(--emerald);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.4;
-                transform: scale(0.85);
-            }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(0.85); }
         }
 
         main {
             flex: 1;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 3.5rem 2rem;
+            padding: 2.5rem 1.5rem 4rem 1.5rem;
             width: 100%;
         }
 
-        .hero {
-            margin-bottom: 3.5rem;
+        .directory-header {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .hero h1 {
-            font-size: 2.75rem;
+        .directory-title h1 {
+            font-size: 1.85rem;
             font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.35rem;
             background: linear-gradient(to right, #ffffff, #cbd5e1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
+        .directory-title p {
             color: var(--text-muted);
-            font-size: 1.125rem;
-            max-width: 650px;
-            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.75rem;
-            margin-bottom: 3rem;
+        .search-wrapper {
+            position: relative;
+            min-width: 260px;
         }
 
-        .card {
+        .search-wrapper input {
+            width: 100%;
             background: var(--surface-color);
             border: 1px solid var(--surface-border);
-            border-radius: 16px;
-            padding: 1.75rem;
-            transition: all 0.25s ease;
+            padding: 0.55rem 0.9rem 0.55rem 2.2rem;
+            border-radius: 10px;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-wrapper input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px var(--primary-glow);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-sub);
+            pointer-events: none;
+        }
+
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .dashboard-card {
+            background: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            border-radius: 14px;
+            padding: 1.35rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
         }
 
-        .card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(245, 158, 11, 0.4);
-            box-shadow: 0 12px 24px -10px var(--primary-glow);
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .dashboard-card:hover {
+            background: var(--surface-hover);
+            transform: translateY(-2px);
+            border-color: rgba(245, 158, 11, 0.35);
+            box-shadow: 0 10px 25px -8px var(--primary-glow);
+        }
+
+        .dashboard-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+            margin-bottom: 0.9rem;
         }
 
         .card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
             background: rgba(245, 158, 11, 0.1);
             color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.25rem;
+            flex-shrink: 0;
             border: 1px solid rgba(245, 158, 11, 0.2);
         }
 
-        .card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
+        .card-icon.map-icon {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border-color: rgba(56, 189, 248, 0.2);
         }
 
-        .card p {
+        .card-header-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+            line-height: 1.3;
+        }
+
+        .card-filename {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.72rem;
+            color: var(--accent);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .card-desc {
             color: var(--text-muted);
-            font-size: 0.9375rem;
+            font-size: 0.85rem;
             line-height: 1.5;
             margin-bottom: 1.25rem;
+            flex-grow: 1;
         }
 
-        .card-btn {
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.75rem;
+            color: var(--text-sub);
+        }
+
+        .badge-type {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9375rem;
-            transition: gap 0.2s ease;
-        }
-
-        .card-btn:hover {
-            gap: 0.75rem;
-            color: #fbbf24;
-        }
-
-        .setup-notice {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px dashed var(--surface-border);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        .setup-notice h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #fbbf24;
-        }
-
-        .setup-notice code {
-            background: #090d14;
-            padding: 0.2rem 0.45rem;
+            gap: 0.3rem;
+            padding: 0.2rem 0.55rem;
             border-radius: 6px;
-            font-size: 0.875rem;
-            color: var(--accent);
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            font-weight: 600;
         }
 
-        .setup-notice ol {
-            margin-left: 1.5rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-            font-size: 0.9375rem;
+        .card-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: gap 0.15s ease;
+        }
+
+        .dashboard-card:hover .card-arrow {
+            gap: 0.45rem;
+            color: #fbbf24;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-sub);
+            background: var(--surface-color);
+            border: 1px dashed var(--surface-border);
+            border-radius: 12px;
         }
 
         footer {
             border-top: 1px solid var(--surface-border);
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.875rem;
+            color: var(--text-sub);
+            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -263,10 +333,9 @@
 
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">
+            <a href="./index.html" class="logo">
                 <div class="logo-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                        stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="1" y2="3"></line>
                         <line x1="12" y1="21" x2="1" y2="23"></line>
@@ -280,78 +349,163 @@
                 </div>
                 SolarScout MVP
             </a>
-            <div class="badge-live">
+            <div class="badge-status">
                 <span class="pulse-dot"></span>
-                GitHub Pages Ready
+                <span id="dashboard-count">Discovering dashboards...</span>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="hero">
-            <h1>Geospatial & Solar Intelligence Dashboard</h1>
-            <p>Automated GitHub Pages deployment portal. All interactive maps, analytical reports, and HTML
-                visualizations placed in the dashboard repository are published here automatically.</p>
-        </section>
-
-        <section class="grid">
-            <div class="card">
-                <div class="card-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
-                        <line x1="8" y1="2" x2="8" y2="18"></line>
-                        <line x1="16" y1="6" x2="16" y2="22"></line>
-                    </svg>
-                </div>
-                <h3>Interactive Land Maps</h3>
-                <p>View cadastral boundary layers, village clusters, and solar land suitability maps.</p>
-                <a href="./map.html" class="card-btn">
-                    Open Map Viewer &rarr;
-                </a>
+        <div class="directory-header">
+            <div class="directory-title">
+                <h1>Dashboards Directory</h1>
+                <p>Select an interactive cadastral map or analysis dashboard below.</p>
             </div>
-
-            <div class="card">
-                <div class="card-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="20" x2="18" y2="10"></line>
-                        <line x1="12" y1="20" x2="12" y2="4"></line>
-                        <line x1="6" y1="20" x2="6" y2="14"></line>
-                    </svg>
-                </div>
-                <h3>Analytical Reports</h3>
-                <p>Access clustering telemetry, government strategy evaluations, and parsed plot metrics.</p>
-                <a href="#reports" class="card-btn">
-                    View Reports &rarr;
-                </a>
-            </div>
-        </section>
-
-        <div class="setup-notice">
-            <h4>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="8" x2="12" y2="12"></line>
-                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            <div class="search-wrapper">
+                <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                Deploying Additional HTML Files
-            </h4>
-            <ol>
-                <li>Save or copy any HTML exports (e.g. <code>map.html</code>, <code>report.html</code>) directly into
-                    the <code>dashboard/</code> directory.</li>
-                <li>Commit and push to GitHub (only <code>dashboard/</code> and <code>.github/</code> are tracked by
-                    git).</li>
-                <li>GitHub Actions will build and update your live site within seconds!</li>
-            </ol>
+                <input type="text" id="search-input" placeholder="Filter dashboards..." autocomplete="off">
+            </div>
+        </div>
+
+        <div class="directory-grid" id="directory-grid">
+            <!-- Dynamically populated via discovery script -->
         </div>
     </main>
 
     <footer>
-        SolarScout MVP &bull; Automated Deployment via GitHub Pages & Actions
+        SolarScout MVP &bull; Automated Geospatial & Cadastral Dashboards
     </footer>
 
+    <script>
+        // Static registry of known dashboards (fallback / instant load)
+        const knownDashboards = [
+            {
+                filename: "plots_kanharpayli_substation.html",
+                title: "Kanharpayli Substation Analysis",
+                description: "Interactive cadastral map and dual-table dashboard (Large Plots >35 Ac & All 4,000+ Plots) with sync hover navigation and Excel export.",
+                badge: "Substation Analysis",
+                icon: "layers"
+            },
+            {
+                filename: "maharashtra_villages_full.html",
+                title: "Maharashtra Villages Overview",
+                description: "Comprehensive village boundaries and centroid mapping across target talukas and districts in Maharashtra.",
+                badge: "Cadastral Map",
+                icon: "map"
+            },
+            {
+                filename: "test.html",
+                title: "Test / Working Preview",
+                description: "Development sandbox and preview build of the latest geospatial dashboard generation.",
+                badge: "Preview",
+                icon: "code"
+            }
+        ];
+
+        // Format nice titles and descriptions for newly discovered files
+        function formatDashboardMeta(filename) {
+            const known = knownDashboards.find(d => d.filename === filename);
+            if (known) return known;
+
+            const cleanName = filename.replace(/\.html$/i, '');
+            const title = cleanName
+                .split(/[_\-]/)
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+
+            return {
+                filename: filename,
+                title: title,
+                description: `Interactive dashboard visualization exported as ${filename}.`,
+                badge: "Dashboard",
+                icon: filename.includes("substation") || filename.includes("plot") ? "layers" : "map"
+            };
+        }
+
+        function renderDashboards(dashboardsList) {
+            const grid = document.getElementById("directory-grid");
+            const countEl = document.getElementById("dashboard-count");
+            const searchInput = document.getElementById("search-input");
+
+            const query = (searchInput.value || "").toLowerCase().trim();
+            const filtered = dashboardsList.filter(d => 
+                d.title.toLowerCase().includes(query) || 
+                d.filename.toLowerCase().includes(query) || 
+                d.description.toLowerCase().includes(query)
+            );
+
+            countEl.textContent = `${dashboardsList.length} Dashboard${dashboardsList.length === 1 ? '' : 's'} Available`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <p>No dashboards match "<strong>${query}</strong>"</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(item => `
+                <a href="./${item.filename}" class="dashboard-card">
+                    <div>
+                        <div class="card-top">
+                            <div class="card-icon ${item.icon === 'map' ? 'map-icon' : ''}">
+                                ${item.icon === 'map' 
+                                    ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>`
+                                    : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>`
+                                }
+                            </div>
+                            <div class="card-header-text">
+                                <div class="card-title">${item.title}</div>
+                                <div class="card-filename">${item.filename}</div>
+                            </div>
+                        </div>
+                        <p class="card-desc">${item.description}</p>
+                    </div>
+                    <div class="card-bottom">
+                        <span class="badge-type">${item.badge}</span>
+                        <span class="card-arrow">
+                            Open Dashboard &rarr;
+                        </span>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Automatic discovery from GitHub repository contents API or local directory listing
+        async function discoverDashboards() {
+            let activeList = [...knownDashboards];
+
+            try {
+                // Try fetching dynamically from GitHub API (works when hosted on GitHub Pages or live server)
+                const res = await fetch("https://api.github.com/repos/prathamskk/solarscoutmvp/contents/dashboard");
+                if (res.ok) {
+                    const files = await res.json();
+                    const htmlFiles = files
+                        .filter(f => f.name.endsWith('.html') && f.name !== 'index.html')
+                        .map(f => f.name);
+
+                    if (htmlFiles.length > 0) {
+                        activeList = htmlFiles.map(formatDashboardMeta);
+                    }
+                }
+            } catch (err) {
+                // Silently fallback to active knownDashboards on offline / CORS restriction
+            }
+
+            renderDashboards(activeList);
+
+            document.getElementById("search-input").addEventListener("input", () => {
+                renderDashboards(activeList);
+            });
+        }
+
+        discoverDashboards();
+    </script>
 </body>
 
 </html>
